@@ -1,4 +1,4 @@
-*****************************************************
+/*****************************************************
  * class ALHeap
  * Implements a min heap using an ArrayList as underlying container
  *****************************************************/
@@ -29,7 +29,7 @@ public class ALHeap {
     public String toString() 
     { 
     	String ret = "";
-	for(String s : _heap){
+	for(Integer s : _heap){
 		ret += s + "\t";	
 	}
 	return ret;
@@ -44,7 +44,7 @@ public class ALHeap {
     public boolean isEmpty() 
     { 
 	return _heap.isEmpty();	
-    } //O(?)
+    } //O(1)
 
 
 
@@ -56,7 +56,7 @@ public class ALHeap {
     public Integer peekMin() 
     { 
     	return _heap.get(0);
-    } //O(?)
+    } //O(1)
 
 
 
@@ -68,13 +68,14 @@ public class ALHeap {
     public void add( Integer addVal ) 
     { 
 	for (int i = 0; i < _heap.size(); i++){
-		if addVal <= _heap.get(i){
-			_heap.add(i, addVal);
-			return;
-		}
+	    if (addVal <= _heap.get(i)){
+		_heap.add(i, addVal);
+		return;
+	    }
 	}
+	_heap.add(addVal);
     } //O(n)
-
+    
 
 
     /*****************************************************
@@ -84,7 +85,7 @@ public class ALHeap {
      *****************************************************/
     public Integer removeMin() 
     {
-	_heap.remove(0);
+	return _heap.remove(0);
     }//O(n)
 
 
@@ -97,8 +98,10 @@ public class ALHeap {
      *****************************************************/
     private int minChildPos( int pos ) 
     {
-
-    }//O(?)
+	if (2*pos+1 >= _heap.size())
+	    return -1;
+	return 2*pos+1;
+    }//O(1)
 
 
 
@@ -123,10 +126,11 @@ public class ALHeap {
     //main method for testing
     public static void main( String[] args ) {
 
-	/*--V--------------MOVE ME DOWN------------------V---
+
 	  ALHeap pile = new ALHeap();
 	  pile.add(2);
 	  System.out.println(pile);
+
 	  pile.add(4);
 	  System.out.println(pile);
 	  pile.add(6);
@@ -167,7 +171,9 @@ public class ALHeap {
 	  System.out.println(pile);
 	  System.out.println("removing " + pile.removeMin() + "...");
 	  System.out.println(pile);
-	  ==|============================================|===*/
+	  /*--V--------------MOVE ME DOWN------------------V---	\
+	
+	    ==|============================================|===*/
 
     }//end main()
 
