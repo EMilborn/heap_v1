@@ -15,7 +15,7 @@ public class ALHeap {
      *****************************************************/
     public ALHeap() 
     { 
-
+	_heap = new ArrayList<Integer>();
     }
 
 
@@ -28,8 +28,12 @@ public class ALHeap {
      *****************************************************/
     public String toString() 
     { 
-
-    }//O(?)
+    	String ret = "";
+	for(String s : _heap){
+		ret += s + "\t";	
+	}
+	return ret;
+    }//O(n)
 
 
 
@@ -39,8 +43,7 @@ public class ALHeap {
      *****************************************************/
     public boolean isEmpty() 
     { 
-
-	return _heap.isEmpty(); 
+	return _heap.isEmpty();	
     } //O(?)
 
 
@@ -52,6 +55,7 @@ public class ALHeap {
      *****************************************************/
     public Integer peekMin() 
     { 
+    	return _heap.get(0);
     } //O(?)
 
 
@@ -63,8 +67,13 @@ public class ALHeap {
      *****************************************************/
     public void add( Integer addVal ) 
     { 
-
-    } //O(?)
+	for (int i = 0; i < _heap.size(); i++){
+		if addVal <= _heap.get(i){
+			_heap.add(i, addVal);
+			return;
+		}
+	}
+    } //O(n)
 
 
 
@@ -75,8 +84,8 @@ public class ALHeap {
      *****************************************************/
     public Integer removeMin() 
     {
-
-    }//O(?)
+	_heap.remove(0);
+    }//O(n)
 
 
 
