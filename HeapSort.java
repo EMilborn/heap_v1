@@ -17,14 +17,21 @@ public class Heapsort {
 
 
 	//STEP 1: heapify array contents
+	maxHeapify(data);
 
 	//STEP 2: repeatedly pull from heap until empty
+	for (int i = 0; i < data.length / 2; i++){
+	    swap(i, data.length - 1 -i, data);
+	    bubble(i, data.length - 2 - i, data);
+	}
 
 	//STEP teh LAST: return modified array
 	return data;
     }//end sort() -- O(?)
 
-
+    public void bubble(int pos, int max, int[] data){
+	
+    }
 	
     private void minHeapify( int[] a ) {
 
@@ -46,7 +53,7 @@ public class Heapsort {
 		    break;
 	    }
 	}
-    }//end minHeapify() -- O(?)
+    }//end minHeapify() -- O(nlogn)
 
 
 
@@ -69,7 +76,7 @@ public class Heapsort {
 		    break;
 	    }
 	}
-    }//end maxHeapify() -- O(?)
+    }//end maxHeapify() -- O(nlogn)
 
 
 
